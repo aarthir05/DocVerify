@@ -43,7 +43,7 @@ def upload_document(request):
         document = UploadedDocument.objects.create(
             user=user,
             filename=file.name,
-            file=file.read(),
+            file=file,
             fraud_score=0.0,  # Replace with real fraud detection logic
             verdict='Pending'
         )
@@ -91,3 +91,15 @@ def delete_document(request, doc_id):
         return JsonResponse({'message': 'Document deleted'})
     except UploadedDocument.DoesNotExist:
         return JsonResponse({'error': 'Document not found'}, status=404)
+
+
+from django.http import FileResponse, Http404
+
+@csrf_exempt
+@require_http_methods(["GET"])
+def view_file(request, doc_id):
+    try:
+        doc = UploadedDocument.objects.get(id=doc_id)
+        return FileResponse(doc.file.open(), as_attachment=True, filename=doc.filename)
+    except UploadedDocument.DoesNotExist:
+        raise Http404("Document not found.")

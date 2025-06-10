@@ -4,7 +4,7 @@ import 'login_page.dart';
 import 'signup_page.dart';
 import 'splash_page.dart';
 import 'upload_page.dart';
-import 'auth_guard.dart'; // <-- import it
+import 'auth_guard.dart'; 
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
