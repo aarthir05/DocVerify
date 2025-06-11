@@ -14,7 +14,7 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   Future<void> checkAuthStatus() async {
-    await Future.delayed(Duration(seconds: 2)); // Optional splash delay
+    await Future.delayed(Duration(seconds: 1)); // Optional splash delay
     final prefs = await SharedPreferences.getInstance();
     final token = prefs.getString('jwt_token');
 
