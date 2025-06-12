@@ -5,6 +5,8 @@ import 'dart:convert';
 import 'package:file_picker/file_picker.dart';
 
 class UploadPage extends StatefulWidget {
+  const UploadPage({super.key});
+
   @override
   _UploadPageState createState() => _UploadPageState();
 }
